@@ -1,7 +1,13 @@
 #root {
   margin: 0 auto;
 }
-.wrapper {
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.app-content {
+  flex-grow: 1;
   display: flex;
   justify-content: space-around;
 }
