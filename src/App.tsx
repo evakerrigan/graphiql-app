@@ -4,6 +4,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { Docs } from './components/Docs/Docs';
 import { Code } from './components/Code/Code';
 import { Output } from './components/Output/Output';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Code />
         <Output />
       </div>
+      <Footer />
     </>
   )
 }
