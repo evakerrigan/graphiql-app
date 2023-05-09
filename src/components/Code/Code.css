@@ -1,0 +1,19 @@
+.code {
+  width: 28%;
+  padding: 2rem;
+  border: 1px solid #000;
+  height: 100%;
+  position: relative;
+}
+.code-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  padding: 5px;
+  background-color: #444;
+  border-radius: 5px;
+}
+.code-arrow:hover {
+  background-color: #777;
+}

@@ -1,0 +1,11 @@
+.header {
+  max-width: 100%;
+  padding: 2rem;
+  border-bottom: 1px solid #000;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+}
+.header-login {
+  cursor: pointer;
+}
