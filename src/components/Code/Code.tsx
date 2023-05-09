@@ -22,6 +22,16 @@ export const Code = () => {
           fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
         }}
       />
+      <div className="code-wrapper">
+        <div className="code-variables code-block">
+          variables<br />
+          тут вводим переменные
+        </div>
+        <div className="code-headers code-block">
+          headers<br />
+          тут вводим заголовки
+        </div>
+      </div>
       <button className="code-arrow">&gt;</button>
     </div>
   )

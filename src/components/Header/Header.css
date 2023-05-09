@@ -13,4 +13,16 @@
 }
 .header-login {
   cursor: pointer;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.header-loc-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 3px;
+}
+.header-loc-button.active {
+  background: buttonface;
 }

@@ -9,10 +9,21 @@
   top: 0;
   right: 0;
   cursor: pointer;
-  padding: 5px;
+  padding: 0.5rem;
   background-color: #444;
-  border-radius: 5px;
+  border-radius: 3px;
+  background: buttonface;
+  border: none;
 }
 .code-arrow:hover {
   background-color: #777;
+}
+.code-wrapper {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.code-block {
+  padding: 2rem;
+  border: 1px solid #000;
 }
