@@ -26,4 +26,6 @@ function App() {
   )
 }
 
+// t('hi, {name}', {name: 'ivan55'})
+
 export default App

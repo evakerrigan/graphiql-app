@@ -2,9 +2,10 @@ import { useState } from 'react';
 import './Code.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { DocumentNode, gql } from '@apollo/client';
+import { CodeTemplates } from '../CodeTemplates/CodeTemplates';
 
 interface CodePops {
-  setQueryGraphql: (s:DocumentNode)=> void,
+  setQueryGraphql: (s: DocumentNode) => void,
 }
 
 export const Code = ({ setQueryGraphql }: CodePops) => {
@@ -19,6 +20,7 @@ export const Code = ({ setQueryGraphql }: CodePops) => {
 
   return (
     <div className="code">
+      <CodeTemplates setCode={setCode} />
       <CodeEditor
         value={code}
         language="graphql"
