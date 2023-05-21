@@ -1,18 +1,27 @@
-import React from 'react';
+import { useState } from 'react';
 import './Code.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
+import { DocumentNode, gql } from '@apollo/client';
 
-export const Code = () => {
+interface CodePops {
+  setQueryGraphql: (s:DocumentNode)=> void,
+}
 
-  const [code, setCode] = React.useState(
-    `function add(a, b) {\n  return a + b;\n}`
+export const Code = ({ setQueryGraphql }: CodePops) => {
+
+  const [code, setCode] = useState<string>(
+    'query rickAndMorty {}'
   );
+
+  const run = () => {
+    setQueryGraphql(gql(code));
+  }
 
   return (
     <div className="code">
       <CodeEditor
         value={code}
-        language="js"
+        language="graphql"
         placeholder="Please enter JS code."
         onChange={(evn) => setCode(evn.target.value)}
         padding={15}
@@ -32,7 +41,7 @@ export const Code = () => {
           тут вводим заголовки
         </div>
       </div>
-      <button className="code-arrow">&gt;</button>
+      <button onClick={run} className="code-arrow">&gt;</button>
     </div>
   )
 }

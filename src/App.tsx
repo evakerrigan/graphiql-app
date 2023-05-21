@@ -5,8 +5,12 @@ import { Docs } from './components/Docs/Docs';
 import { Code } from './components/Code/Code';
 import { Output } from './components/Output/Output';
 import { Footer } from './components/Footer/Footer';
+import { DocumentNode, gql } from '@apollo/client';
+import { useState } from 'react';
 
 function App() {
+
+  const [queryGraphql, setQueryGraphql] = useState<DocumentNode | undefined>(undefined);
 
   return (
     <div className="app">
@@ -14,8 +18,8 @@ function App() {
       <div className="app-content">
         <Sidebar />
         <Docs />
-        <Code />
-        <Output />
+        <Code setQueryGraphql={setQueryGraphql} />
+        { queryGraphql ? <Output queryGraphql={queryGraphql} /> : <div>Ничего нет</div> }
       </div>
       <Footer />
     </div>
