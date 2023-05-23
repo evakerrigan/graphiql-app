@@ -1,4 +1,4 @@
-query rickAndMorty {
+export default `query rickAndMorty {
   characters(page: 2, filter: { name: "" }) {
     info {
       count
@@ -31,4 +31,4 @@ query rickAndMorty {
   episodesByIds(ids: [1, 2]) {
     id
   }
-}
+}`;

@@ -5,7 +5,7 @@ import { Docs } from './components/Docs/Docs';
 import { Code } from './components/Code/Code';
 import { Output } from './components/Output/Output';
 import { Footer } from './components/Footer/Footer';
-import { DocumentNode, gql } from '@apollo/client';
+import { DocumentNode } from '@apollo/client';
 import { useState } from 'react';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Sidebar />
         <Docs />
         <Code setQueryGraphql={setQueryGraphql} />
-        { queryGraphql ? <Output queryGraphql={queryGraphql} /> : <div>Ничего нет</div> }
+        {queryGraphql ? <Output queryGraphql={queryGraphql} /> : <div>Ничего нет</div>}
       </div>
       <Footer />
     </div>

@@ -1,17 +1,30 @@
 import { useState } from 'react';
+import test from './test.graphql';
 import characters from './characters.graphql';
+import episodes from './episodes.graphql';
+import locations from './locations.graphql';
 
 
 const templates = [
   {
     id: '1',
-    code: characters,
-    name: 'characters'
+    code: test,
+    name: 'test'
   },
   {
     id: '2',
     code: characters,
-    name: 'characters2'
+    name: 'characters'
+  },
+  {
+    id: '3',
+    code: episodes,
+    name: 'episodes'
+  },
+  {
+    id: '4',
+    code: locations,
+    name: 'locations'
   }
 ];
 
