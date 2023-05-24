@@ -10,6 +10,13 @@ export const Output = ({ queryGraphql }: OutputProps) => {
 
   const { loading, error, data } = useQuery(queryGraphql);
 
+  if (loading) {
+    return <div className="output-loading">Loading...</div>
+  }
+  if (error) {
+    return <div className="output-error">Error</div>
+  }
+
   return (
     <div className="output-inner">
       <div className="json">
@@ -20,7 +27,7 @@ export const Output = ({ queryGraphql }: OutputProps) => {
             value={JSON.stringify(data)}
             language="js"
             placeholder="тут итоговый json"
-            onChange={() => {JSON.stringify(data)}}
+            onChange={() => { JSON.stringify(data) }}
             padding={15}
             style={{
               fontSize: 12,
@@ -31,8 +38,8 @@ export const Output = ({ queryGraphql }: OutputProps) => {
           />
 
           {/* {JSON.stringify(loading)}
-          {JSON.stringify(error)}
-          {JSON.stringify(data)} */}
+          {JSON.stringify(error)} */}
+          {/* {JSON.stringify(data)} */}
 
         </div>
       </div>

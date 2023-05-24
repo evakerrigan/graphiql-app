@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import test from './test.graphql';
+import variables from './variables.graphql';
 import characters from './characters.graphql';
 import episodes from './episodes.graphql';
 import locations from './locations.graphql';
@@ -10,6 +11,11 @@ const templates = [
     id: '1',
     code: test,
     name: 'test'
+  },
+  {
+    id: '5',
+    code: variables,
+    name: 'variables'
   },
   {
     id: '2',
