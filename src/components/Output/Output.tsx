@@ -11,7 +11,7 @@ export const Output = ({ queryGraphql }: OutputProps) => {
   const { loading, error, data } = useQuery(queryGraphql);
 
   return (
-    <div className="output">
+    <div className="output-inner">
       <div className="json">
         Здесь выводится json, полученный из api,
         после нажатия кнопки стрелка в разделе код
@@ -25,6 +25,7 @@ export const Output = ({ queryGraphql }: OutputProps) => {
             style={{
               fontSize: 12,
               backgroundColor: "#21242b",
+              width: "500px",
               fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
             }}
           />

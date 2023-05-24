@@ -19,7 +19,9 @@ function App() {
         <Sidebar />
         <Docs />
         <Code setQueryGraphql={setQueryGraphql} />
+        <div className="output">
         {queryGraphql ? <Output queryGraphql={queryGraphql} /> : <div>Ничего нет</div>}
+        </div>
       </div>
       <Footer />
     </div>
