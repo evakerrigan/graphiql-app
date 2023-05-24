@@ -20,9 +20,11 @@ export const Code = ({ setQueryGraphql }: CodePops) => {
   const run = () => {
     if (variables !== '') {
       console.log('variables существует', variables);
+      setQueryGraphql(gql(code));
+    } else {
+      console.log('variables не существует', variables);
+      setQueryGraphql(gql(code));
     }
-    console.log('variables не существует', variables);
-    setQueryGraphql(gql(code));
   }
 
   return (
@@ -48,7 +50,7 @@ export const Code = ({ setQueryGraphql }: CodePops) => {
             value={variables}
             language="json"
             placeholder="Please enter JS code."
-            onChange={(evn) => setCode(evn.target.value)}
+            onChange={(evn) => setVariables(evn.target.value)}
             padding={15}
             style={{
               fontSize: 12,
