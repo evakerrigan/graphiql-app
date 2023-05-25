@@ -40,6 +40,7 @@ export const Output = ({ queryGraphql }: OutputProps) => {
           {/* {JSON.stringify(loading)}
           {JSON.stringify(error)} */}
           {/* {JSON.stringify(data)} */}
+          {/* // "@graphiql/react": "^0.17.3", */}
 
         </div>
       </div>
