@@ -13,9 +13,18 @@ export const Code = ({ setQueryGraphql }: CodePops) => {
   const [code, setCode] = useState<string>(
     'query rickAndMorty {}'
   );
+  const [variables, setVariables] = useState<string>(
+    '{"name": "rick"}'
+  );
 
   const run = () => {
-    setQueryGraphql(gql(code));
+    if (variables !== '') {
+      console.log('variables существует', variables);
+      setQueryGraphql(gql(code));
+    } else {
+      console.log('variables не существует', variables);
+      setQueryGraphql(gql(code));
+    }
   }
 
   return (
@@ -37,6 +46,18 @@ export const Code = ({ setQueryGraphql }: CodePops) => {
         <div className="code-variables code-block">
           variables<br />
           тут вводим переменные
+          <CodeEditor
+            value={variables}
+            language="json"
+            placeholder="Please enter JS code."
+            onChange={(evn) => setVariables(evn.target.value)}
+            padding={15}
+            style={{
+              fontSize: 12,
+              backgroundColor: "#21242b",
+              fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+            }}
+          />
         </div>
         <div className="code-headers code-block">
           headers<br />
