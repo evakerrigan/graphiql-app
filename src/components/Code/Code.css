@@ -26,7 +26,12 @@
 .code-block {
   padding: 2rem;
   border: 1px solid #000;
+  width: 50%;
 }
 .errorMessage {
   color: red;
+}
+.title-code {
+  padding: 10px 0 20px 0;
+  cursor: pointer;
 }

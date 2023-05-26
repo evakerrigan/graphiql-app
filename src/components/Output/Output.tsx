@@ -30,6 +30,7 @@ export const Output = ({ queryGraphql, variablesGraphql }: OutputProps) => {
             placeholder="тут итоговый json"
             onChange={() => { JSON.stringify(data) }}
             padding={15}
+            readOnly={true}
             style={{
               fontSize: 12,
               backgroundColor: "#21242b",
