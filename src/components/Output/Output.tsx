@@ -4,17 +4,18 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 
 interface OutputProps {
   queryGraphql: DocumentNode,
+  variablesGraphql: any,
 }
 
-export const Output = ({ queryGraphql }: OutputProps) => {
+export const Output = ({ queryGraphql, variablesGraphql }: OutputProps) => {
 
-  const { loading, error, data } = useQuery(queryGraphql);
+  const { loading, error, data } = useQuery(queryGraphql, { variables: JSON.parse(variablesGraphql || `{}`) });
 
   if (loading) {
     return <div className="output-loading">Loading...</div>
   }
   if (error) {
-    return <div className="output-error">Error</div>
+    return <div className="output-error">Error {error.message}</div>
   }
 
   return (
@@ -29,6 +30,7 @@ export const Output = ({ queryGraphql }: OutputProps) => {
             placeholder="тут итоговый json"
             onChange={() => { JSON.stringify(data) }}
             padding={15}
+            readOnly={true}
             style={{
               fontSize: 12,
               backgroundColor: "#21242b",
@@ -36,11 +38,6 @@ export const Output = ({ queryGraphql }: OutputProps) => {
               fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
             }}
           />
-
-          {/* {JSON.stringify(loading)}
-          {JSON.stringify(error)} */}
-          {/* {JSON.stringify(data)} */}
-          {/* // "@graphiql/react": "^0.17.3", */}
 
         </div>
       </div>

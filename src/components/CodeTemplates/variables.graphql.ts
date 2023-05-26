@@ -1,6 +1,6 @@
 export default `
-{
-  characters(page: 2, filter: {name: @name}) {
+query a($name: String) {
+  characters(page: 2, filter: {name: $name}) {
     info {
       count
     }
