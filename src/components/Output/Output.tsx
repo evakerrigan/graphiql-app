@@ -9,9 +9,7 @@ interface OutputProps {
 
 export const Output = ({ queryGraphql, variablesGraphql }: OutputProps) => {
 
-  console.log('зашли в Output');
-
-  const { loading, error, data } = useQuery(queryGraphql, { variables: JSON.parse(variablesGraphql) });
+  const { loading, error, data } = useQuery(queryGraphql, { variables: JSON.parse(variablesGraphql || `{}`) });
 
   if (loading) {
     return <div className="output-loading">Loading...</div>

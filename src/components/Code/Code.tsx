@@ -9,25 +9,40 @@ interface CodePops {
   setVariablesGraphql: (s: string) => void,
 }
 
-export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops ) => {
-
-  console.log('зашли в Code');
+export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops) => {
 
   const [code, setCode] = useState<string>(
     'query rickAndMorty {}'
   );
-  const [variables, setVariables] = useState<string>(
-    '{"name": "rick"}'
-  );
+  const [variables, setVariables] = useState<string>('');
+
+  const [errorQuery, setErrorQuery] = useState<string>('');
+  const [errorVariables, setErrorVariables] = useState<string>('');
+
+  // '{"name": "rick"}'
 
   const run = () => {
-      setVariablesGraphql(variables);
+    setErrorQuery('');
+    setErrorVariables('');
+    try {
       setQueryGraphql(gql(code));
+    } catch (e) {
+      setErrorQuery(e.message);
+    }
+    try {
+      JSON.parse(variables || `{}`);
+      setVariablesGraphql(variables || `{}`);
+    } catch (e) {
+      setErrorVariables(e.message);
+    }
+    // setVariablesGraphql(variables);
+    // setQueryGraphql(gql(code));
   }
 
   return (
     <div className="code">
       <CodeTemplates setCode={setCode} />
+      <div className="errorMessage">{errorQuery}</div>
       <CodeEditor
         value={code}
         language="graphql"
@@ -44,6 +59,7 @@ export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops ) => {
         <div className="code-variables code-block">
           variables<br />
           тут вводим переменные
+          <div className="errorMessage">{errorVariables}</div>
           <CodeEditor
             value={variables}
             language="json"

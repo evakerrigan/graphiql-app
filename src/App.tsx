@@ -11,7 +11,7 @@ import { useState } from 'react';
 function App() {
 
   const [queryGraphql, setQueryGraphql] = useState<DocumentNode | undefined>(undefined);
-  const [variablesGraphql, setVariablesGraphql] = useState<any | undefined>(`{}`);
+  const [variablesGraphql, setVariablesGraphql] = useState<any | undefined>();
 
   return (
     <div className="app">
@@ -28,7 +28,5 @@ function App() {
     </div>
   )
 }
-
-// t('hi, {name}', {name: 'ivan55'})
 
 export default App
