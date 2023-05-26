@@ -1,5 +1,5 @@
 export default `
-query a($name: string) {
+query a($name: String) {
   characters(page: 2, filter: {name: $name}) {
     info {
       count

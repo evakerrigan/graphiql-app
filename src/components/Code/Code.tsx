@@ -6,9 +6,12 @@ import { CodeTemplates } from '../CodeTemplates/CodeTemplates';
 
 interface CodePops {
   setQueryGraphql: (s: DocumentNode) => void,
+  setVariablesGraphql: (s: string) => void,
 }
 
-export const Code = ({ setQueryGraphql }: CodePops) => {
+export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops ) => {
+
+  console.log('зашли в Code');
 
   const [code, setCode] = useState<string>(
     'query rickAndMorty {}'
@@ -18,13 +21,8 @@ export const Code = ({ setQueryGraphql }: CodePops) => {
   );
 
   const run = () => {
-    if (variables !== '') {
-      console.log('variables существует', variables);
+      setVariablesGraphql(variables);
       setQueryGraphql(gql(code));
-    } else {
-      console.log('variables не существует', variables);
-      setQueryGraphql(gql(code));
-    }
   }
 
   return (

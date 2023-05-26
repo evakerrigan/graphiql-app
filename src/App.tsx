@@ -11,6 +11,7 @@ import { useState } from 'react';
 function App() {
 
   const [queryGraphql, setQueryGraphql] = useState<DocumentNode | undefined>(undefined);
+  const [variablesGraphql, setVariablesGraphql] = useState<any | undefined>(`{}`);
 
   return (
     <div className="app">
@@ -18,9 +19,9 @@ function App() {
       <div className="app-content">
         <Sidebar />
         <Docs />
-        <Code setQueryGraphql={setQueryGraphql} />
+        <Code setQueryGraphql={setQueryGraphql} setVariablesGraphql={setVariablesGraphql} />
         <div className="output">
-        {queryGraphql ? <Output queryGraphql={queryGraphql} /> : <div>Ничего нет</div>}
+        {queryGraphql ? <Output queryGraphql={queryGraphql} variablesGraphql={variablesGraphql} /> : <div>Ничего нет</div>}
         </div>
       </div>
       <Footer />

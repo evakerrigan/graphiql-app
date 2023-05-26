@@ -43,8 +43,6 @@ export const CodeTemplates = ({
   const [query, setQuery] = useState<string>('');
 
   const ok = () => {
-    console.log('query', query);
-
     setCode(query)
   }
 
