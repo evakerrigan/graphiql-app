@@ -11,7 +11,7 @@ import {useState} from 'react';
 function App() {
 
     const [queryGraphql, setQueryGraphql] = useState<DocumentNode | undefined>(undefined);
-    const [variablesGraphql, setVariablesGraphql] = useState<any | undefined>();
+    const [variablesGraphql, setVariablesGraphql] = useState<string | undefined>();
 
     return (
         <div className="app">

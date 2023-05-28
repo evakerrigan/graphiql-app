@@ -4,7 +4,7 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 
 interface OutputProps {
   queryGraphql: DocumentNode,
-  variablesGraphql: any,
+  variablesGraphql: string | undefined,
 }
 
 export const Output = ({ queryGraphql, variablesGraphql }: OutputProps) => {

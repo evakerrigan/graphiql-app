@@ -1,7 +1,7 @@
-import {TypeArgument} from "./TypeArgument.tsx";
-import {Schema, SchemaType, TypeItem} from "../types.ts";
-import {useState} from "react";
-import {TypeDetail} from "./TypeDetail.tsx";
+import { TypeArgument } from "./TypeArgument.tsx";
+import { Schema, SchemaType, TypeItem } from "../types.ts";
+import { useState } from "react";
+import { TypeDetail } from "./TypeDetail.tsx";
 
 
 interface TreeProps {
@@ -10,7 +10,7 @@ interface TreeProps {
 
 const ROOT_TYPE_NAME = 'Query';
 
-export const Tree = ({data}: TreeProps) => {
+export const Tree = ({ data }: TreeProps) => {
   console.log('data:', data);
 
   const [currentType, setCurrentType] = useState<SchemaType>()
@@ -19,7 +19,7 @@ export const Tree = ({data}: TreeProps) => {
   // const printedSchema = printSchema(schema);
   // const {nodes} = Parser.parse(printedSchema);
 
-  const getType = (typeName: string) => data.__schema.types.find(({name}) => name === typeName);
+  const getType = (typeName: string) => data.__schema.types.find(({ name }) => name === typeName);
 
   const nodeQuery = getType(ROOT_TYPE_NAME)
 
@@ -31,30 +31,29 @@ export const Tree = ({data}: TreeProps) => {
       setCurrentType(getType(currentType.name))
     }
   }
-
   return <>
     {nodeQuery ? (
-      <div style={{position: 'relative'}}>
+      <div style={{ position: 'relative' }}>
         <div><strong> {nodeQuery.name}</strong></div>
         <div>
-          {nodeQuery.fields.map(({id, name, description, args, type}) => (
-            <div key={id} style={{marginBottom: '10px'}}>
+          {nodeQuery.fields.map(({ name, description, args, type }) => (
+            <div key={name} style={{ marginBottom: '10px' }}>
               <div>
-                <span style={{color: 'blue'}}>{name}</span>({args.map((arg, index) => (<>
-                  <span style={{color: 'red'}}>{arg.name}</span>:
-                  <TypeArgument typeInfo={arg.type} onClick={showType}/>
+                <span style={{ color: 'blue' }}>{name}</span>({args.map((arg, index) => (<div key={index}>
+                  <span style={{ color: 'red' }}>{arg.name}</span>:
+                  <TypeArgument typeInfo={arg.type} onClick={showType} />
                   {args.length > 1 && index !== args.length - 1 && ', '}
-                </>
-              ))}) : <span style={{color: 'orange'}}><TypeArgument typeInfo={type} onClick={showType}/></span>
+                </div>
+                ))}) : <span style={{ color: 'orange' }}><TypeArgument typeInfo={type} onClick={showType} /></span>
               </div>
-              <div style={{color: 'green'}}>// {description}</div>
+              <div style={{ color: 'green' }}>// {description}</div>
             </div>
           ))}
         </div>
         {currentType && currentType.name ? (
-          <div style={{background: 'skyblue'}}>
+          <div style={{ background: 'skyblue' }}>
             {JSON.stringify(getType(currentType.name))}
-            <TypeDetail typeInfo={currentType}/>
+            <TypeDetail typeInfo={currentType} />
           </div>
         ) : null}
       </div>
