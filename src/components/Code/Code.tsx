@@ -14,6 +14,7 @@ export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops) => {
   const [code, setCode] = useState<string>(
     'query rickAndMorty {}'
   );
+
   const [variables, setVariables] = useState<string>('');
 
   const [errorQuery, setErrorQuery] = useState<string>('');
