@@ -1,28 +1,46 @@
 import './App.css';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import { useReg } from './hooks/useReg';
+import NotFound from './pages/NotFound/NotFound';
+import Welcome from './pages/Welcome/Welcome';
+import { RoutePermission } from './utility/routePermission';
 
 function App() {
 
-
+    const isReg = useReg();
 
     return (
         <div className="app">
 
             <Header />
             <BrowserRouter>
-                <Routes>
-                    {/* <Route path="/" element={<Welcome />} /> */}
-                    <Route path="/main" element={<Main />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
 
+                <Routes>
+                    <Route path="/" element={<Welcome />} />
+
+                    <Route path="/login" element={
+                        <RoutePermission>
+                            <Login />
+                        </RoutePermission>} />
+
+                    <Route path="/register" element={
+                        <RoutePermission>
+                            <Register />
+                        </RoutePermission>} />
+                    {isReg.user ?
+                        <Route path="/main" element={<Main />} /> : <Route path="/main" element={<Navigate to="/" replace />} />
+                    }
+
+                    <Route path="/notfound" element={<NotFound />} />
+                    <Route path="*" element={<Navigate to="/notfound" replace />} />
 
                 </Routes>
+
             </BrowserRouter>
             <Footer />
         </div>

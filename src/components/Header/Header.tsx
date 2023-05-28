@@ -1,6 +1,11 @@
+import { Link, NavLink, Navigate } from 'react-router-dom';
+import { logout } from '../../firebase';
+import { useReg } from '../../hooks/useReg';
 import './Header.css';
 
 export const Header = () => {
+  const isReg = useReg();
+  console.log('isReg', isReg);
   return (
     <div className="header">
       <a className="header-logo" href="./">
@@ -12,9 +17,13 @@ export const Header = () => {
         <button className="header-loc-button">En</button>
       </div>
       <div className="header-wrapper">
-        <button className="header-login">Зарегистрироваться</button>
-        <button className="header-login">Логин</button>
-        <button className="header-login">Выйти</button>
+        {
+          (isReg.user) ? <button onClick={logout} className="header-login">Выйти</button> :
+            <>
+              <a href='/register' className="header-login">Зарегистрироваться</a>
+              <a href='/login' className="header-login">Войти</a>
+            </>
+        }
       </div>
     </div>
   )
