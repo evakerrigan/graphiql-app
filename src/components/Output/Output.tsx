@@ -2,16 +2,14 @@ import { DocumentNode, useQuery } from '@apollo/client';
 import './Output.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
-type TData = Record<string, string | number >
-
 interface OutputProps {
   queryGraphql: DocumentNode,
-  variablesGraphql:  string,
+  variablesGraphql: any,
 }
 
 export const Output = ({ queryGraphql, variablesGraphql }: OutputProps) => {
 
-  const { loading, error, data } = useQuery<TData>(queryGraphql, { variables: JSON.parse(variablesGraphql || `{}`) });
+  const { loading, error, data } = useQuery(queryGraphql, { variables: JSON.parse(variablesGraphql || `{}`) });
 
   if (loading) {
     return <div className="output-loading">Loading...</div>
