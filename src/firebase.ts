@@ -31,7 +31,7 @@ const logInWithEmailAndPassword = async (email: string, password: string) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
-    console.error(err);
+    // console.error(err);
   }
 };
 
@@ -50,7 +50,7 @@ const registerWithEmailAndPassword = async (
       email,
     });
   } catch (err) {
-    console.error(err);
+    // console.error(err);
   }
 };
 
