@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 import './Code.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { DocumentNode, gql } from '@apollo/client';
@@ -6,7 +6,8 @@ import { CodeTemplates } from '../CodeTemplates/CodeTemplates';
 
 interface CodePops {
   setQueryGraphql: (s: DocumentNode) => void,
-  setVariablesGraphql: (s: string) => void,
+  // setVariablesGraphql: (s: string) => void,
+  setVariablesGraphql: Dispatch<SetStateAction<undefined | string>>
 }
 
 export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops) => {
@@ -15,7 +16,6 @@ export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops) => {
     'query rickAndMorty {}'
   );
 
-  
   const [variables, setVariables] = useState<string>('');
 
   const [errorQuery, setErrorQuery] = useState<string>('');
@@ -32,13 +32,13 @@ export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops) => {
     try {
       setQueryGraphql(gql(code));
     } catch (e) {
-      setErrorQuery(e.message);
+      setErrorQuery((e as Error).message);
     }
     try {
       JSON.parse(variables || `{}`);
       setVariablesGraphql(variables || `{}`);
     } catch (e) {
-      setErrorVariables(e.message);
+      setErrorVariables((e as Error).message);
     }
     // setVariablesGraphql(variables);
     // setQueryGraphql(gql(code));
