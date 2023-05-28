@@ -4,6 +4,7 @@ import { Docs } from '../../components/Docs/Docs'
 import { Code } from '../../components/Code/Code'
 import { DocumentNode } from '@apollo/client'
 import { Output } from '../../components/Output/Output'
+import { t } from 'i18next'
 
 const Main = () => {
 
@@ -17,7 +18,7 @@ const Main = () => {
       <Code setQueryGraphql={setQueryGraphql} setVariablesGraphql={setVariablesGraphql} />
       <div className="output">
         {queryGraphql ? <Output queryGraphql={queryGraphql} variablesGraphql={variablesGraphql} /> :
-          <div>Ничего нет</div>}
+          <div>{t('notQuery')}</div>}
       </div>
     </div>
   )

@@ -1,8 +1,8 @@
-// import React from 'react';
+import { t } from "i18next";
 
 const NotFound = () => {
   return (
-    <div>NotFound</div>
+    <div className="app-content">{t('notFound')}</div>
   )
 }
 

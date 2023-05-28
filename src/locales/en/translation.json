@@ -1,3 +1,16 @@
 {
-  "SignIn": "Sign In"
+  "signin": "Sign In",
+  "register": "Register",
+  "signout": "Sign Out",
+  "welcome": "Welcome",
+  "goMain": "GO TO MAIN PAGE",
+  "login": "Login",
+  "loginText": "Already have an account? ",
+  "now": "now",
+  "registerText": "Don't have an account? ",
+  "notQuery": "Not Query",
+  "notFound": "404",
+  "showDocs": "Show Docs",
+  "variables": "Variables",
+  "headers": "Headers"
 }

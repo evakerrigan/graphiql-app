@@ -6,6 +6,7 @@ import {
   registerWithEmailAndPassword,
 } from "../../firebase";
 import "./Register.css";
+import { t } from "i18next";
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,10 +47,10 @@ function Register() {
           placeholder="Password"
         />
         <button className="register__btn" onClick={register}>
-          Register
+        {t('register')}
         </button>
         <div>
-          Already have an account? <Link to="/login">Login</Link> now.
+        {t('loginText')} <Link to="/login">{t('login')}</Link> {t('now')}.
         </div>
       </div>
     </div>
