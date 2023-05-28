@@ -9,15 +9,27 @@ import { useReg } from './hooks/useReg';
 import NotFound from './pages/NotFound/NotFound';
 import Welcome from './pages/Welcome/Welcome';
 import { RoutePermission } from './utility/routePermission';
+import { useEffect, useState } from 'react';
+import i18next from 'i18next';
 
 function App() {
+    const [lang, setLang] = useState(true);
+
+    useEffect(() => {
+        // const switcher = (bool: boolean) => {
+        //     setLang(bool);
+            lang ? i18next.changeLanguage('ru') : i18next.changeLanguage('en');
+            console.log('lang in useEffect', lang);
+        //   };
+    }, [lang])
+
 
     const isReg = useReg();
 
     return (
         <div className="app">
 
-            <Header />
+            <Header setLang={setLang} lang={lang} />
             <BrowserRouter>
 
                 <Routes>

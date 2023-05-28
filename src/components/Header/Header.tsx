@@ -1,12 +1,17 @@
-import i18next from 'i18next';
+// import i18next from 'i18next';
+import { Dispatch, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 import { logout } from '../../firebase';
 import { useReg } from '../../hooks/useReg';
 import './Header.css';
 import { useEffect, useState } from 'react';
 
+interface HeaderProps {
+  lang: boolean,
+  setLang: Dispatch<SetStateAction<boolean>>,
+}
 
-export const Header = () => {
+export const Header = ({lang, setLang}: HeaderProps) => {
 
 
   const [sticky, setSticky] = useState(false);
@@ -27,12 +32,21 @@ export const Header = () => {
   }, [sticky]);
 
   const isReg = useReg();
-  const [lang, setLang] = useState(true);
+  // const [lang, setLang] = useState(true);
 
-  const switcher = (bool: boolean) => {
-    setLang(bool);
-    bool ? i18next.changeLanguage('ru') : i18next.changeLanguage('en');
-  };
+  // const switcher = (bool: boolean) => {
+  //   setLang(bool);
+  //   bool ? i18next.changeLanguage('ru') : i18next.changeLanguage('en');
+  // };
+
+  const setLangRu = () => {
+    setLang(true);
+    console.log('lang Ru', lang);
+  }
+  const setLangEn = () => {
+    setLang(false);
+    console.log('lang En', lang);
+  }
 
   const {t} = useTranslation();
 
@@ -42,9 +56,12 @@ export const Header = () => {
         <img src="image/logo.jpg" className="header-img" />
       </a>
       <div className="header-loc">
-        <button onClick={() => switcher(true)} className={lang ? 'header-loc-button active' : 'header-loc-button'}>Ru</button>
+        <button onClick={setLangRu()} className={lang ? 'header-loc-button active' : 'header-loc-button'}>Ru</button>
         &nbsp;&nbsp;/&nbsp;&nbsp;
-        <button onClick={() => switcher(false)} className={!lang ? 'header-loc-button active' : 'header-loc-button'}>En</button>
+        <button onClick={setLangEn()} className={!lang ? 'header-loc-button active' : 'header-loc-button'}>En</button>
+        {/* <button onClick={() => switcher(true)} className={lang ? 'header-loc-button active' : 'header-loc-button'}>Ru</button>
+        &nbsp;&nbsp;/&nbsp;&nbsp;
+        <button onClick={() => switcher(false)} className={!lang ? 'header-loc-button active' : 'header-loc-button'}>En</button> */}
       </div>
       <div className="header-wrapper">
         {
