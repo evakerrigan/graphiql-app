@@ -3,6 +3,7 @@ import './Code.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { DocumentNode, gql } from '@apollo/client';
 import { CodeTemplates } from '../CodeTemplates/CodeTemplates';
+import { t } from 'i18next';
 
 interface CodePops {
   setQueryGraphql: (s: DocumentNode) => void,
@@ -62,7 +63,7 @@ export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops) => {
       />
       <div className="code-wrapper">
         <div className="code-variables code-block">
-          <div className="code-variables-title title-code" onClick={() => { setOpenVariables(!openVariables) }}> variables<br /></div>
+          <div className="code-variables-title title-code" onClick={() => { setOpenVariables(!openVariables) }}> {t('variables')}<br /></div>
           <div className="code-variables-wrapper wrapper-code">
             {openVariables ?
               <>
@@ -83,7 +84,7 @@ export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops) => {
           </div>
         </div>
         <div className="code-headers code-block">
-          <div className="code-headers-title title-code" onClick={() => { setOpenHeaders(!openHeaders) }}>headers<br /></div>
+          <div className="code-headers-title title-code" onClick={() => { setOpenHeaders(!openHeaders) }}>{t('headers')}<br /></div>
           {openHeaders ?
             <>
               <div className="code-headers-wrapper wrapper-code">Headers можно не делать, по желанию</div>

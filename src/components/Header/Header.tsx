@@ -14,7 +14,6 @@ export const Header = () => {
     setLang(bool);
     console.log('bool', bool);
     bool ? i18next.changeLanguage('ru') : i18next.changeLanguage('en');
-    // bool ? 
     // i18next.changeLanguage(bool ? 'ru' : 'en');
     console.log('bool2', bool)
 
@@ -34,10 +33,10 @@ export const Header = () => {
       </div>
       <div className="header-wrapper">
         {
-          (isReg.user) ? <button onClick={logout} className="header-login">Выйти</button> :
+          (isReg.user) ? <button onClick={logout} className="header-login">{t('signout')}</button> :
             <>
-              <a href='/register' className="header-login">Зарегистрироваться</a>
-              <a href='/login' className="header-login">{t('SignIn')}</a>
+              <a href='/register' className="header-login">{t('register')}</a>
+              <a href='/login' className="header-login">{t('signin')}</a>
             </>
         }
       </div>

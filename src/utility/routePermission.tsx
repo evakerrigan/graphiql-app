@@ -1,5 +1,3 @@
-// import React from 'react';
-// import useReg  from '../hooks/useReg';
 import { useReg } from "../hooks/useReg";
 import { Navigate } from 'react-router-dom';
 
