@@ -5,6 +5,13 @@
   position: sticky;
   display: flex;
   justify-content: space-between;
+  top: 0;
+  z-index: 10;
+  background-color: #282c35;
+  transition: linear 3s;
+}
+.header-sticky {
+  background-color: green;
 }
 .header-img {
   width: 70px;
