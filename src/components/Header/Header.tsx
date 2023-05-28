@@ -3,10 +3,29 @@ import { useTranslation } from 'react-i18next';
 import { logout } from '../../firebase';
 import { useReg } from '../../hooks/useReg';
 import './Header.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 export const Header = () => {
+
+
+  const [sticky, setSticky] = useState(false);
+
+  const scrollHeader = () => {
+    window.addEventListener('scroll', () => {
+      if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+        setSticky(true);
+      } else {
+        setSticky(false);
+      }
+    });
+  };
+
+  useEffect(() => {
+    scrollHeader();
+    return () => window.addEventListener('scroll', scrollHeader);
+  }, [sticky]);
+
   const isReg = useReg();
   const [lang, setLang] = useState(true);
 
@@ -22,7 +41,7 @@ export const Header = () => {
   const {t} = useTranslation();
 
   return (
-    <div className="header">
+    <div className={sticky ? 'header-sticky header' : 'header'}>
       <a className="header-logo" href="./">
         <img src="image/logo.jpg" className="header-img" />
       </a>
