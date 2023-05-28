@@ -7,7 +7,6 @@ import { t } from 'i18next';
 
 interface CodePops {
   setQueryGraphql: (s: DocumentNode) => void,
-  // setVariablesGraphql: (s: string) => void,
   setVariablesGraphql: Dispatch<SetStateAction<undefined | string>>
 }
 
@@ -25,8 +24,6 @@ export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops) => {
   const [openVariables, setOpenVariables] = useState<boolean>(false);
   const [openHeaders, setOpenHeaders] = useState<boolean>(false);
 
-  // '{"name": "rick"}'
-
   const run = () => {
     setErrorQuery('');
     setErrorVariables('');
@@ -41,8 +38,6 @@ export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops) => {
     } catch (e) {
       setErrorVariables((e as Error).message);
     }
-    // setVariablesGraphql(variables);
-    // setQueryGraphql(gql(code));
   }
 
   return (

@@ -2,9 +2,6 @@ import { useState } from 'react';
 import test from './test.graphql';
 import variables from './variables.graphql';
 import characters from './characters.graphql';
-import episodes from './episodes.graphql';
-import locations from './locations.graphql';
-
 
 const templates = [
   {
@@ -22,16 +19,6 @@ const templates = [
     code: characters,
     name: 'characters'
   },
-  {
-    id: '3',
-    code: episodes,
-    name: 'episodes'
-  },
-  {
-    id: '4',
-    code: locations,
-    name: 'locations'
-  }
 ];
 
 interface CodeTemplatesProps {
