@@ -1,32 +1,24 @@
 import { TypeArgument } from "./TypeArgument.tsx";
-import { Schema, SchemaType, TypeItem } from "../types.ts";
+import { Schema, SchemaType } from "../types.ts";
 import { useState } from "react";
 import { TypeDetail } from "./TypeDetail.tsx";
 
 
 interface TreeProps {
-  data: { __schema: Schema }// todo: результат ответа запроса IntrospectionQueryRequest
+  data: { __schema: Schema }
 }
 
 const ROOT_TYPE_NAME = 'Query';
 
 export const Tree = ({ data }: TreeProps) => {
-  console.log('data:', data);
 
   const [currentType, setCurrentType] = useState<SchemaType>()
-
-  // const schema: GraphQLSchema = buildClientSchema(data);
-  // const printedSchema = printSchema(schema);
-  // const {nodes} = Parser.parse(printedSchema);
 
   const getType = (typeName: string) => data.__schema.types.find(({ name }) => name === typeName);
 
   const nodeQuery = getType(ROOT_TYPE_NAME)
 
-  console.log('nodeQuery:', nodeQuery)
-
-  const showType = (typeInfo: TypeItem) => {
-    console.log('typeInfo:', typeInfo)
+  const showType = () => {
     if (currentType?.name) {
       setCurrentType(getType(currentType.name))
     }

@@ -31,11 +31,7 @@ export const Header = () => {
 
   const switcher = (bool: boolean) => {
     setLang(bool);
-    console.log('bool', bool);
     bool ? i18next.changeLanguage('ru') : i18next.changeLanguage('en');
-    // i18next.changeLanguage(bool ? 'ru' : 'en');
-    console.log('bool2', bool)
-
   };
 
   const {t} = useTranslation();
