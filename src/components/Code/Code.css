@@ -1,0 +1,37 @@
+.code {
+  width: 40%;
+  padding: 2rem;
+  border: 1px solid #000;
+  position: relative;
+}
+.code-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  padding: 0.5rem;
+  background-color: #444;
+  border-radius: 3px;
+  background: buttonface;
+  border: none;
+}
+.code-arrow:hover {
+  background-color: #777;
+}
+.code-wrapper {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.code-block {
+  padding: 2rem;
+  border: 1px solid #000;
+  width: 50%;
+}
+.errorMessage {
+  color: red;
+}
+.title-code {
+  padding: 10px 0 20px 0;
+  cursor: pointer;
+}

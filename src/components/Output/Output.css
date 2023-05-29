@@ -1,0 +1,12 @@
+.output {
+  width: 40%;
+  padding: 2rem;
+  border: 1px solid #000;
+}
+.output-inner {
+  width: 100%;
+}
+.json {
+  padding: 15px;
+  background: #21242b;
+}
