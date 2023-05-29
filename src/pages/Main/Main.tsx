@@ -4,12 +4,14 @@ import { Docs } from '../../components/Docs/Docs'
 import { Code } from '../../components/Code/Code'
 import { DocumentNode } from '@apollo/client'
 import { Output } from '../../components/Output/Output'
-import { t } from 'i18next'
+import { useTranslation } from 'react-i18next';
 
 const Main = () => {
 
   const [queryGraphql, setQueryGraphql] = useState<DocumentNode | undefined>(undefined);
   const [variablesGraphql, setVariablesGraphql] = useState<string | undefined>();
+
+  const { t } = useTranslation();
 
   return (
     <div className="app-content">

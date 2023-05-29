@@ -17,6 +17,7 @@ export const Output = ({ queryGraphql, variablesGraphql }: OutputProps) => {
   if (error) {
     return <div className="output-error">Error {error.message}</div>
   }
+  
 
   return (
     <div className="output-inner">

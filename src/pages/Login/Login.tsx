@@ -4,7 +4,7 @@ import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Login.css";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +17,8 @@ function Login() {
     }
     if (user) navigate("/main");
   }, [user, loading, navigate]);
+
+  const { t } = useTranslation();
 
 
   return (
@@ -43,7 +45,7 @@ function Login() {
           {t('login')}
         </button>
         <div>
-        {t('registerText')} <Link to="/register">{t('register')}</Link> {t('now')}.
+          {t('registerText')} <Link to="/register">{t('register')}</Link> {t('now')}.
         </div>
       </div>
     </div>
