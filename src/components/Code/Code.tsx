@@ -3,7 +3,7 @@ import './Code.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { DocumentNode, gql } from '@apollo/client';
 import { CodeTemplates } from '../CodeTemplates/CodeTemplates';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 interface CodePops {
   setQueryGraphql: (s: DocumentNode) => void,
@@ -39,6 +39,8 @@ export const Code = ({ setQueryGraphql, setVariablesGraphql }: CodePops) => {
       setErrorVariables((e as Error).message);
     }
   }
+
+  const {t} = useTranslation();
 
   return (
     <div className="code">

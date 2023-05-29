@@ -16,11 +16,7 @@ function App() {
     const [lang, setLang] = useState(true);
 
     useEffect(() => {
-        // const switcher = (bool: boolean) => {
-        //     setLang(bool);
-            lang ? i18next.changeLanguage('ru') : i18next.changeLanguage('en');
-            console.log('lang in useEffect', lang);
-        //   };
+        lang ? i18next.changeLanguage('ru') : i18next.changeLanguage('en');
     }, [lang])
 
 

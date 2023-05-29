@@ -6,7 +6,7 @@ import {
   registerWithEmailAndPassword,
 } from "../../firebase";
 import "./Register.css";
-import { t } from "i18next";
+import { useTranslation } from 'react-i18next';
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +21,8 @@ function Register() {
     if (loading) return;
     if (user) history("/main");
   }, [user, loading, history]);
+
+  const { t } = useTranslation();
   return (
     <div className="register">
       <div className="register__container">
@@ -46,10 +48,10 @@ function Register() {
           placeholder="Password"
         />
         <button className="register__btn" onClick={register}>
-        {t('register')}
+          {t('register')}
         </button>
         <div>
-        {t('loginText')} <Link to="/login">{t('login')}</Link> {t('now')}.
+          {t('loginText')} <Link to="/login">{t('login')}</Link> {t('now')}.
         </div>
       </div>
     </div>

@@ -1,8 +1,10 @@
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { useReg } from '../../hooks/useReg';
 import './Welcome.css';
 
 const Welcome = () => {
+
+  const {t} = useTranslation();
 
   const isReg = useReg();
 
